@@ -28,6 +28,7 @@
             <lightning:input type="number" aura:id="campingItemForm" label="Price"
                              name="campingItemPrice"
                              value="{!v.newItem.Price__c}"
+                             formatter="currency"
                              required="false" />
             <lightning:input type="checkbox" aura:id="campingItemForm" label="Packed?"
                              name="campingItemPacked"
