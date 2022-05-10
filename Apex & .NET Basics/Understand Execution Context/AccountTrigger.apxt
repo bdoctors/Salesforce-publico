@@ -1,0 +1,12 @@
+// Name: AccountTrigger
+// sObject: Account
+// Fires: before records are inserted
+trigger AccountTrigger on Account (before insert) {
+
+// Use the isBefore and isInsert trigger context variables
+    if (Trigger.isBefore && Trigger.isInsert) {
+
+        // must call the AccountTriggerHandler.CreateAccounts() method with the collection of new records
+        AccountTriggerHandler.CreateAccounts(Trigger.New);
+    }
+}

@@ -1,0 +1,16 @@
+// Name: AccountTriggerHandler
+public with sharing class AccountTriggerHandler {
+    // Method name: CreateAccounts
+    // The method must accept a List of Account objects
+    public static void CreateAccounts(List<Account> parametro) {
+        List<Account> accts = new List<Account>(); 
+        // For each Account record, before saving, ensure that the ShippingState 
+        // field has the same value as the BillingState field
+        for (Account acct : parametro) {   
+            if(acct.ShippingState != acct.BillingState) {
+                acct.ShippingState = acct.BillingState; 
+            }
+            accts.add(acct);						
+        }
+    }
+}
