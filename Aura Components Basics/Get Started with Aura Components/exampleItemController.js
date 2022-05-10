@@ -6,3 +6,4 @@
         updateEvent.fire();
     }
 })
+// Esto es solo un ejemplo del controller lado cliente
