@@ -22,7 +22,9 @@
             <lightning:input type="number" aura:id="campingItemForm" label="Quantity"
                              name="campingItemQuantity"
                              value="{!v.newItem.Quantity__c}"
-                             required="true" />
+                             required="true"
+                             min="1" 
+                             messageWhenRangeUnderflow="Enter a quantity that's at least 1" />
             <lightning:input type="number" aura:id="campingItemForm" label="Price"
                              name="campingItemPrice"
                              value="{!v.newItem.Price__c}"
