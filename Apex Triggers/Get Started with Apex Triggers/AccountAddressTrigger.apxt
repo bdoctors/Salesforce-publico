@@ -1,0 +1,12 @@
+// Name: AccountAddressTrigger
+// Object: Account
+// Events: before insert and before update
+
+trigger AccountAddressTrigger on Account (before insert, before update) {
+    // Condition: Match Billing Address is true
+    for(Account a : Trigger.New) {
+        if (a.Match_Billing_Address__c == true) {
+            a.ShippingPostalCode = a.BillingPostalCode;
+        }
+    }
+}
