@@ -33,6 +33,12 @@
             <lightning:input type="checkbox" aura:id="campingItemForm" label="Packed?"
                              name="campingItemPacked"
                              checked="{!v.newItem.Packed__c}" />
+                             
+           <lightning:button label="Create Item"
+                              class="slds-m-top_medium"
+                              variant="brand"
+                              onclick="{!c.clickCreateItem}" />
+                             
         </form>
         <!-- / CREATE NEW CAMPING ITEM FORM -->
       </fieldset>
