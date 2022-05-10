@@ -1,0 +1,79 @@
+({
+    
+    // 6.3) The handleAddItem method saves the record to the database and adds the record to the items value provider
+    handleAddItem : function(component, event, helper) {
+        var item = event.getParam("item");
+        
+        var action = component.get("c.saveItem");
+        action.setParams({
+            "item": item
+        });
+        
+        action.setCallback(this, function(response){
+            var state = response.getState();
+            if(component.isValid() && state === "SUCCES"){
+                var item = component.get("v.items");
+                items.push(item);
+                component.set("v.items", items);
+            }
+        });
+        $A.enqueueAction(action);
+    },    
+    
+	// 5.2) Add a doInit initialization handler that loads existing records from the database when the component starts up
+    doInit : function(component, event, helper){
+        var action = component.get("c.getItems");
+        action.setCallback(this, function(response){
+            var state = response.getState();
+            if(state === "SUCCES"){
+                component.set("v.items", response.getReturnValue())
+            } else {
+                console.log("Failed wit state: " + state)
+            }
+        });
+        $A.enqueueAction(action);
+    },
+    
+    // 4.6) If the form is valid, the JavaScript controller pushes the newItem onto the array of existing items, 
+	//      triggers the notification that the items value provider has changed, and resets the newItem value
+	//      provider with a blank sObjectType of Camping_Item__c (for this challenge, place the code in your 
+	//      component's controller, not the helper)
+    clickCreateItem : function(component, event, helper) {
+	    let validItem = component.find('itemform').reduce(function (validSoFar, inputCmp) {
+            // Displays error messages for invalid fields
+            inputCmp.showHelpMessageIfInvalid();
+            return validSoFar && inputCmp.get('v.validity').valid;
+        }, true);
+        // If we pass error checking, do some real work
+        if(validItem){
+            // Create the new expense
+            let newCampItem = component.get("v.newItem");
+            console.log("Create item: " + JSON.stringify(newCampItem));
+			// 5.3) Modify the JavaScript controller to use a createItem method in the helper to save records to the
+			//		database from a valid form submission. The new items are added to the controller's items value provider.
+            helper.createItem(component, newCampItem);
+            
+            let campingItems = component.get("v.items");
+            console.log("Before: " + JSON.stringify(campingItems));
+
+            
+            // triggers the notification that the items value provider has changed
+            let item1 = JSON.parse(JSON.stringify(newCampItem));
+            
+            // añade el newItem al string
+            campingItems.push(item1);
+            console.log("After: " + JSON.stringify(campingItems));
+
+            // pushes the newItem onto the array of existing items
+            component.set("v.items", campingItems);
+
+            // resets the newItem value provider with a blank sObjectType of Camping_Item__c
+            component.set("v.newItem", {'sobjectType': 'Camping_Item__c',
+                        'Name': '',
+                        'Quantity__c': 0,
+                        'Price__c': 0,
+                        'Packed__c': false});
+        }
+    }
+
+})
