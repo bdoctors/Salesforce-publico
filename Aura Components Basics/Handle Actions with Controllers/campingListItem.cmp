@@ -1,0 +1,19 @@
+<aura:component>
+    <aura:attribute name="item" 
+                    type="Camping_Item__c" 
+                    required="true"
+                    default="{Name:'Tent', Price__c:0, Quantity__c:1, Packed__c:true}"/>
+    <p>Name: {!v.item.Name} * Price: {!v.item.Price__c} * Quantity: {!v.item.Quantity__c} * Packed: {!v.item.Packed__c} </p>
+    <!--      remember to use <aura:application extends="force:slds"> in aura application tag -->
+    <p>Price: <lightning:formattedNumber value="{!v.item.Price__c}" style="currency" minimumFractionDigits="2" maximumFractionDigits="2"/></p>
+    <p>Quantity: <lightning:formattedNumber value="{!v.item.Quantity__c}" /></p>
+    <p>
+    <lightning:input type="toggle"
+                     label="Packed?"
+                     name="packed"
+                     checked="{!v.item.Packed__c}" />
+	</p>
+  <p>
+  <lightning:button label="Packed!" onclick="{!c.packItem}" />
+  </p>
+</aura:component>
