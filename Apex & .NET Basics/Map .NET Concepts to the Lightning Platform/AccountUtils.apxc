@@ -1,0 +1,10 @@
+// Note: AccountUtils is the class name.
+public class AccountUtils {
+    // Public method accountsByState
+    // Note: Account is the object API name.
+    public static List<Account> accountsByState(String stateAbbreviation) {
+        // The method must return the ID and name of all Account objects that
+        // match the BillingState for the state abbreviation passed to the method.
+        return [SELECT Id, Name FROM Account WHERE BillingState = :stateAbbreviation];
+    }
+}
