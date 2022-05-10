@@ -4,7 +4,39 @@
                     default="{ 'sobjectType' : 'Camping_Item__c',
                              'Quantity__c' : 0,
                              'Price__c' : 0 }" />
-                             
+
+    <!-- CREATE NEW ITEM -->
+    <div aria-labelledby="newCampingItemform">
+        <!-- BOXED AREA -->
+        <fieldset class="slds-box slds-theme_default slds-container_small">
+        <legend id="newCampingItemform" class="slds-text-heading_small
+          slds-p-vertical_medium">
+          Add Camping Item
+        </legend>
+        <!-- CREATE NEW CAMPING ITEM FORM -->
+        <form class="slds-form_stacked">
+            <lightning:input aura:id="campingItemForm" label="Camping Item Name"
+                             name="campingItemName"
+                             value="{!v.newItem.Name}"
+                             required="true" />
+            <lightning:input type="number" aura:id="campingItemForm" label="Quantity"
+                             name="campingItemQuantity"
+                             value="{!v.newItem.Quantity__c}"
+                             required="true" />
+            <lightning:input type="number" aura:id="campingItemForm" label="Price"
+                             name="campingItemPrice"
+                             value="{!v.newItem.Price__c}"
+                             required="false" />
+            <lightning:input type="checkbox" aura:id="campingItemForm" label="Packed?"
+                             name="campingItemPacked"
+                             checked="{!v.newItem.Packed__c}" />
+        </form>
+        <!-- / CREATE NEW CAMPING ITEM FORM -->
+      </fieldset>
+      <!-- / BOXED AREA -->
+    </div>
+    <!-- / CREATE NEW ITEM -->
+
     <lightning:card title="Camping Items">
         <p class="slds-p-horizontal_small">
             <aura:iteration items="{!v.items}" var="item">
