@@ -1,9 +1,17 @@
-public with sharing class ExpensesController {
-    // STERN LECTURE ABOUT WHAT'S MISSING HERE COMING SOON
-    @AuraEnabled
+public with sharing class ExpensesController {                    // With sharing respeta sharing rules
+    @AuraEnabled                                                  // Declarar @AuraEnabled antes del metodo
     public static List<Expense__c> getExpenses() {
+        // Perform isAccessible() checking first, then
         return [SELECT Id, Name, Amount__c, Client__c, Date__c,
                        Reimbursed__c, CreatedDate
                 FROM Expense__c];
     }
+
+    @AuraEnabled                                                 // metodo saveExpense
+    public static Expense__c saveExpense(Expense__c expense) {
+        // Perform isUpdateable() checking first, then
+        upsert expense;
+        return expense;
+    }
+
 }
