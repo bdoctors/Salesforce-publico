@@ -1,3 +1,4 @@
+controller.js 
 ({
     
     // 6.3) The handleAddItem method saves the record to the database and adds the record to the items value provider
@@ -76,4 +77,34 @@
         }
     }
 
+})
+
+helper.js
+({
+	// 5.3) Modify the JavaScript controller to use a createItem method in the helper to save records to the database from
+	//       a valid form submission. The new items are added to the controller's items value provider
+	createItem : function(component, newCampingItem) {
+		var action = component.get("c.saveItem");
+        action.setParams({
+            "campingItem" : newCampingItem
+        });
+        
+        action.setCallback(this, function(response){
+            var state = response.getState();
+            if(state==="SUCCES"){
+                var parsedCampingItem = JSON.parse(JSON.stringify(newCampingItem));
+                console.log(""+JSON.parse(JSON.stringify(parsedCampingItem)), JSON.stringify(parsedCampingItem));
+                var campingItems = JSON.parse(JSON.stringify(component.get("v.items")));
+                campingItems.push(parsedCampingItem);
+                component.set("v.items", campingItems);
+                component.set("v.newItem", {'sobjectType': 'Camping_Item__c',
+                        'Name': '',
+                        'Quantity__c': 0,
+                        'Price__c': 0,
+                        'Packed__c': false});
+            }
+        });
+        $A.enqueueAction(action);
+	}
+    
 })
