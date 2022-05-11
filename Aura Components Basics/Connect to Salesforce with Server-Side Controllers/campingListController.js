@@ -27,10 +27,10 @@
         // If we pass error checking, do some real work
         if(validCampingItem){ 
              // Create the newItem
-            let newItem = component.get("v.newItem");
-            console.log("Create item: " + JSON.stringify(newItem));
+            let item = component.get("v.newItem");
+            console.log("Create item: " + JSON.stringify(item));
               
-            helper.createItem(component, newCampItem);
+            helper.createItem(component, item);
         }               
   }              
   
