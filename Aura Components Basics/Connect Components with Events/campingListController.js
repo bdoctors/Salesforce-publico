@@ -17,4 +17,9 @@
         // Send action off to be executed
         $A.enqueueAction(action);
     },
+    handleAddItem: function(component, event, helper) {
+        let newItem = event.getParam("item");
+        helper.addItem(component, newItem);
+    },
+
 })
