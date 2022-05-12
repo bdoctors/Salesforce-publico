@@ -9,6 +9,7 @@
                     'Reimbursed__c': false }"/>
     
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
+    <aura:handler name="updateExpense" event="c:expensesItemUpdate" action="{!c.handleUpdateExpense}"/>
     
     <!-- PAGE HEADER -->
     <lightning:layout class="slds-page-header slds-page-header_object-home">
