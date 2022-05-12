@@ -11,6 +11,11 @@
         let updateEvent = component.getEvent("updateExpense");
         updateEvent.setParams({ "expense": expense });
         updateEvent.fire();
-    }
+    },
+    
+    handleCreateExpense: function(component, event, helper) {
+        let newExpense = event.getParam("expense");
+        helper.createExpense(component, newExpense);
+    },
 
 })
