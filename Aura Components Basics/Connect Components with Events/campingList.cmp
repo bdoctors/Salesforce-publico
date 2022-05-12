@@ -7,6 +7,16 @@
 
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>    
 
+    <!-- NEW CAMPING FORM -->
+    <lightning:layout>
+        <lightning:layoutItem padding="around-small" size="6">
+
+            <c:campingListForm/>
+            
+        </lightning:layoutItem>
+    </lightning:layout>
+    <!-- / NEW CAMPING FORM -->
+
     <lightning:card title="Camping Items">
         <p class="slds-p-horizontal_small">
             <aura:iteration items="{!v.items}" var="item">
