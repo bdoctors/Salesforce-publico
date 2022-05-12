@@ -6,6 +6,8 @@
                     'Client__c': '',
                     'Date__c': '',
                     'Reimbursed__c': false }"/>
+                    
+    <aura:registerEvent name="createExpense" type="c:expensesItemUpdate"/>
 
         <!-- CREATE NEW EXPENSE -->
     <div aria-labelledby="newexpenseform">
