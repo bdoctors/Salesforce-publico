@@ -3,6 +3,7 @@
     
     <aura:handler name="init" action="{!c.doInit}" value="{!this}"/>
     <aura:handler name="updateExpense" event="c:expensesItemUpdate" action="{!c.handleUpdateExpense}"/>
+    <aura:handler name="createExpense" event="c:expensesItemUpdate" action="{!c.handleCreateExpense}"/>
     
     <!-- PAGE HEADER -->
     <lightning:layout class="slds-page-header slds-page-header_object-home">
