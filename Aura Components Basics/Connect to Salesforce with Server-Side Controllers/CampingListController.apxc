@@ -32,7 +32,6 @@ public with sharing class CampingListController {
             Schema.SObjectType.Camping_Item__c.fields.getMap();
         for(String field : fieldsToCheck) {
             if( ! fieldDescribeTokens.get(field).getDescribe().isUpdateable()) {
-                console.log("USER DOESN'T HAVE UPDATE PERMISSION");
                 throw new System.NoAccessException();
             }
         }
