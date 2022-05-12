@@ -29,5 +29,16 @@
         });
         $A.enqueueAction(action);
     },
+
+    saveExpense: function(component, expense, callback) {
+        let action = component.get("c.saveExpense");
+        action.setParams({
+            "expense": expense
+        });
+        if (callback) {
+            action.setCallback(this, callback);
+        }
+        $A.enqueueAction(action);
+    },
 	
 })
