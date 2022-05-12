@@ -24,6 +24,20 @@ public with sharing class CampingListController {
     @AuraEnabled
     public static Camping_Item__c saveItem(Camping_Item__c item) { // parameter name must match the parameter name used in your Helper
         // Perform isUpdateable() checking first, then
+        // Check to make sure all fields are updateable to this user
+        String[] fieldsToCheck = new String[] {
+            'Id', 'Name', 'Quantity__c', 'Price__c', 'Packed__c'
+        };
+        Map<String,Schema.SObjectField> fieldDescribeTokens =
+            Schema.SObjectType.Camping_Item__c.fields.getMap();
+        for(String field : fieldsToCheck) {
+            if( ! fieldDescribeTokens.get(field).getDescribe().isUpdateable()) {
+                console.log("USER DOESN'T HAVE UPDATE PERMISSION");
+                throw new System.NoAccessException();
+            }
+        }
+        // OK, they're cool, let 'em through
+
         upsert item;
         return item;
     }
