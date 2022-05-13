@@ -14,4 +14,5 @@ private class MyTestClass {
 }
 ```
 To update your code coverage results, use Test | Run All rather than Test | New Run.
-it’s still important to test for different inputs to ensure the quality of your code.
+
+It’s still important to test for different inputs to ensure the quality of your code.
