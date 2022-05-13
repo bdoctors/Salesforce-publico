@@ -18,8 +18,18 @@
         $A.enqueueAction(action);
     },
     handleAddItem: function(component, event, helper) {
-        let newItem = event.getParam("item");
-        helper.addItem(component, newItem);
-    },
-
+        let action = component.get("c.saveItem");
+        action.setParams({
+            "item": item
+        });
+        action.setCallback(this, function(response){
+            let state = response.getState();
+            if (state === "SUCCESS") {
+                let items = component.get("v.items");
+                expenses.push(response.getReturnValue());
+                component.set("v.items", items);
+            }
+        });
+        $A.enqueueAction(action);
+    },    
 })
