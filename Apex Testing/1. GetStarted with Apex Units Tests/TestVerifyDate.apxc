@@ -1,15 +1,32 @@
 @isTest
 public class TestVerifyDate {
-//    @isTest static void testTaskPriority () {
-  //      String pri = TaskUtil.getTaskPriority('NY');
-    //    System.assertEquals('Normal', pri);
-//    }
-  //  @isTest static void testTaskHighPriority () {
-    //    String pri = TaskUtil.getTaskPriority('CA');
-      //  System.assertEquals('High', pri);
-//    }
-  //  @isTest static void testTaskPriorityInvalid () {
-    //    String pri = TaskUtil.getTaskPriority('Montana');
-      //  System.assertEquals(null, pri);
-//    }
+    @isTest static void testCheckDatesIf1 () {
+        Date testDate1 = Date.today();
+        Integer delta = 29;
+        Date testDate2 = testDate1.addDays(delta);
+        Date test = VerifyDate.CheckDates(testDate1, testDate2);
+        System.assertEquals(testDate2, test);
+    }
+    @isTest static void testCheckDatesElse1 () {
+        Date testDate1 = Date.today();
+        Integer delta = 31;
+        Date testDate2 = testDate1.addDays(delta);
+        Date test = VerifyDate.CheckDates(testDate1, testDate2);
+        System.assertEquals(Date.newInstance(testDate1.year(), testDate1.month(), Date.daysInMonth(testDate1.year(), testDate1.month())), test);
+    }
+    // Otra manera mas clara de hacerlo podría ser usando fechas fijas
+    @isTest static void testCheckDatesIf2 () {
+        Date testDate1 = Date.parse('05/15/2022'); // El formato depende del locale, en este caso es MM/DD/YYYY
+        Integer delta = 29;
+        Date testDate2 = testDate1.addDays(delta);
+        Date test = VerifyDate.CheckDates(testDate1, testDate2);
+        System.assertEquals(testDate2, test);               // La salida esperada es date2
+    }
+    @isTest static void testCheckDatesElse2 () {
+        Date testDate1 = Date.parse('05/15/2022');
+        Integer delta = 31;
+        Date testDate2 = testDate1.addDays(delta);
+        Date test = VerifyDate.CheckDates(testDate1, testDate2);
+        System.assertEquals(Date.parse('05/31/2022'), test); // La salida esperada es el ultimo dia del mes de date1
+    }
 }
