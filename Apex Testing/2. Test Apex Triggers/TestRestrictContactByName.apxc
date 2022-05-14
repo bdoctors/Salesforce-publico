@@ -1,6 +1,6 @@
 @isTest
 private class TestRestrictContactByName {
-    @isTest static void TestRestrictContactByName1() {
+    @isTest static void TestRestrictContactByNameInvalid() {
         // Test data setup
         // Create a contact with INVALID LastName, and then try save it
         Contact con = new Contact(LastName='INVALIDNAME');
@@ -11,12 +11,26 @@ private class TestRestrictContactByName {
         // Verify 
         // In this case the insertion should have been stopped by the trigger,
         // so verify that we got back an error.
-        System.debug('falló la inserción?: ' + !result.isSuccess());
+        System.debug('falló la inserción invalida?: ' + !result.isSuccess());
         System.assert(!result.isSuccess());
-        System.debug('hay error?: ' + (result.getErrors().size() > 0));
+        System.debug('hay error invalida?: ' + (result.getErrors().size() > 0));
         System.assert(result.getErrors().size() > 0);
-        System.debug('que error se generó?: ' + result.getErrors()[0].getMessage());
+        System.debug('que error se generó invalida?: ' + result.getErrors()[0].getMessage());
         System.assertEquals('The Last Name "'+con.LastName+'" is not allowed for DML',
                              result.getErrors()[0].getMessage());
+    }
+    @isTest static void TestRestrictContactByNameValid() {
+        // Test data setup
+        // Create a contact with INVALID LastName, and then try save it
+        Contact con = new Contact(LastName='WHATEVER VALID');
+        // Perform test
+        Test.startTest();
+        Database.SaveResult result = Database.insert(con, false);
+        Test.stopTest();
+        // Verify 
+        // In this case the insertion should have been stopped by the trigger,
+        // so verify that we got back an error.
+        System.debug('ejecutó la inserción valida?: ' + result.isSuccess());
+        System.assertEquals(result.isSuccess(), true);
     }
 }
