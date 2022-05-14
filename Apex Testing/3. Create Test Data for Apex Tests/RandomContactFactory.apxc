@@ -1,0 +1,12 @@
+// @isTest // Don't specify the @isTest annotation for either the class or the method, even though it's usually required.
+public class RandomContactFactory {
+    public static List<Contact> generateRandomContacts (Integer numConts, String lastNameConts) {
+        List<Contact> conts = new List<Contact>();
+        for(Integer i=0; i<numConts; i++) {
+            Contact c = new Contact(FirstName = 'testName_' + i, LastName = lastNameConts);
+            conts.add(c);
+        }
+//        insert conts; // Do not insert the generated contacts records to the database
+        return conts;
+    }
+}
