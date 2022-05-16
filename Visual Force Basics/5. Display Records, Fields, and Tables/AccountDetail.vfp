@@ -1,5 +1,5 @@
 <apex:page standardController="Account">
-  <apex:detail />
+  <apex:detail relatedList="false" />
 </apex:page>
 <!-- Use el siguiente comando en consola: $A.get("e.force:navigateToURL").setParams(
     {"url": "/apex/AccountDetail?&id=0018b00001xVC6EAAW"}).fire(); para ver la pagina AccountDetail
