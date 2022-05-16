@@ -1,2 +1,2 @@
-<apex:page >
+<apex:page name="OppView">
 </apex:page>
