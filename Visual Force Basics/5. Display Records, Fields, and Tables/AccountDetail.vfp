@@ -5,10 +5,10 @@
       <apex:outputField value="{! Account.Phone }"/>
       <apex:outputField value="{! Account.Industry }"/>
       <apex:outputField value="{! Account.AnnualRevenue }"/>
-      <apex:relatedList  list="Contacts" />
-      <apex:relatedList list="Opportunities" pageSize="5" />
     </apex:pageBlockSection >
   </apex:pageBlock >
+  <apex:relatedList  list="Contacts" />
+  <apex:relatedList list="Opportunities" pageSize="5" />
 </apex:page>
 <!-- Use el siguiente comando en consola: $A.get("e.force:navigateToURL").setParams(
     {"url": "/apex/AccountDetail?&id=0018b00001xVC6EAAW"}).fire(); para ver la pagina AccountDetail
