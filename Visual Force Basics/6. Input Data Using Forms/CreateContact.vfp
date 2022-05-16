@@ -1,2 +1,4 @@
 <apex:page name="CreateContact" standardController="Contact">
+  <apex:form>
+  </apex:form>
 </apex:page>
