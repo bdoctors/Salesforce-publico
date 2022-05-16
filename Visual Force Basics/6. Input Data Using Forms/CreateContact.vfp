@@ -1,2 +1,2 @@
-<apex:page name="CreateContact" >
+<apex:page name="CreateContact" standardController="Contact">
 </apex:page>
