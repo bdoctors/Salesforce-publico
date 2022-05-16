@@ -1,2 +1,2 @@
-<apex:page name="OppView">
+<apex:page name="OppView" standardController="Opportunity" >
 </apex:page>
