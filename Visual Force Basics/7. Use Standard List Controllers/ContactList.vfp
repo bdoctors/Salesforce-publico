@@ -1,6 +1,6 @@
 <apex:page standardController="Contact" recordSetVar="contacts" >
   <apex:form >
-    <apex:pageBlock title="Contacts list" >
+    <apex:pageBlock title="Contacts list" id="contacts_list">
         <!-- Contacts List -->
         <apex:pageBlockTable value="{! contacts }" var="ct" >
             <apex:column value="{! ct.Firstname }" />
