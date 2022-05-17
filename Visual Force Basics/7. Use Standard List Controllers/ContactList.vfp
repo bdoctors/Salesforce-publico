@@ -8,6 +8,18 @@
        </apex:selectList>
        <!-- Contacts List -->
        <apex:pageBlockTable value="{! contacts }" var="ct" >
+            <table style="width: 100%" ><tr>
+                <td>
+                    <!-- Page X of Y -->
+                </td>
+                <td align="center">
+                  <!-- Previous page -->
+                    <!-- Next page -->
+                </td>
+                <td align="right">
+                  <!-- Records per page -->
+                </td>
+            </tr></table>
             <apex:column value="{! ct.Firstname }" />
             <apex:column value="{! ct.Lastname }" />
             <apex:column value="{! ct.Email }" />
