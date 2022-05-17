@@ -1,2 +1,2 @@
-<apex:page name="AccountList" >
+<apex:page name="AccountList" standardController="Account" >
 </apex:page>
