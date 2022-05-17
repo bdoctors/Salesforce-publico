@@ -1,2 +1,4 @@
 <apex:page name="AccountList" standardController="Account" recordSetVar="accounts" >
+    <apex:repeat var="a" >
+    </apex:repeat>
 </apex:page>
