@@ -1,0 +1,14 @@
+# Create a Visualforce page that shows a list of Accounts linked to their record pages
+Using a Standard List Controller, create a Visualforce that displays a list of Accounts with links to their respective record detail pages.
+
+**Challenge Requirements**
+- Create a new Visualforce page:
+  - Label: AccountList
+  - Name: AccountList
+- Standard controller: **Account**
+- Your page must have a recordSetVar attribute equal to **account**s
+- Your page must have a Visualforce **apex:repeat** component, with the following:
+  - Use the var attribute set to **a**
+  - Use the **<li>** HTML list tag
+  - Use the **apex:outputLink** component to link to the respective record detail page
+- Hint: Record detail pages can be reached by placing a record ID at the root of the URL (e.g. **<record id>**)
