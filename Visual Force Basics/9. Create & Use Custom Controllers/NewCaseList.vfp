@@ -1,4 +1,4 @@
 <apex:page name="NewCaseList" controller="NewCaselistController" >
-    <apex:repeat var="case" >
+    <apex:repeat value="{! newCases }" var="case" >
     </apex:repeat>
 </apex:page>
