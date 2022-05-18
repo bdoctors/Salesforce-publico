@@ -1,2 +1,2 @@
-<apex:page name="NewCaseList" >
+<apex:page name="NewCaseList" controller="NewCaselistController" >
 </apex:page>
