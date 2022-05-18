@@ -1,2 +1,4 @@
 <apex:page name="NewCaseList" controller="NewCaselistController" >
+    <apex:repeat>
+    </apex:repeat>
 </apex:page>
